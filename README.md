@@ -2,7 +2,7 @@
 ### AI-powered Human-Centered Digital Twin for Intelligent Industrial Monitoring, Operator Assistance, and Future XR Integration
 
 <p align="center">
-<img src="Images/Hero Screenshot.png" width="100%">
+<img src="Images/HeroScreenshot.png" width="100%">
 </p>
 
 Overall view of the Industrial Conveyor Digital Twin showing the interactive monitoring dashboard and simulated production environment.
@@ -148,25 +148,49 @@ Media/
 
 ## Industrial Conveyor
 
-*Screenshot*
+<p align="center">
+<img src="Images/ConveyorOperation.png" width="100%">
+</p>
+
+Dynamic conveyor simulation demonstrating product transportation and process execution.
 
 ---
 
-## Dashboard
+## Sensor Monitoring
 
-*Screenshot*
+<p align="center">
+<img src="Images/SensorMonitoring.png" width="100%">
+</p>
+
+Virtual industrial sensors continuously monitor package movement across the production line.
 
 ---
 
 ## Machine Monitoring
 
-*Screenshot*
+<p align="center">
+<img src="Images/MachineMonitoring.png" width="100%">
+</p>
+
+Real-time industrial monitoring dashboard displaying machine operating parameters.
+
+---
+
+## Emergency / Fault State
+
+<p align="center">
+<img src="Images/FaultState.png" width="100%">
+</p>
+
+Emergency stop mode illustrating abnormal operating conditions within the Digital Twin.
 
 ---
 
 ## CSV Logging
 
-*Screenshot*
+<p align="center">
+<img src="Images/CSVLogging.png" width="100%">
+</p>
 
 ---
 
