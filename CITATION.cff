@@ -1,33 +1,50 @@
 cff-version: 1.2.0
+message: "Please cite this software if you use it in research, teaching, demonstrations, or derivative work."
 title: "Industrial Conveyor Digital Twin"
-message: "If you use this project in your research, please cite it using the metadata below."
 type: software
 
 authors:
   - family-names: "Hanif"
     given-names: "Ayaz Muhammad"
     orcid: "https://orcid.org/0000-0002-3473-3929"
-
-repository-code: "https://github.com/Dr-AMH/IndustrialConveyorDigitalTwin"
-
-url: "https://github.com/Dr-AMH/IndustrialConveyorDigitalTwin"
+    affiliation: "Pak-Austria Fachhochschule: Institute of Applied Sciences and Technology"
 
 abstract: >
-  Industrial Conveyor Digital Twin is a Unity-based Human-Centered
-  Digital Twin platform for intelligent industrial monitoring,
-  operator assistance, and future AI/XR research.
+  Industrial Conveyor Digital Twin is a Unity-based industrial simulation
+  and monitoring prototype featuring conveyor operation, virtual entry and
+  exit sensors, package counting, motor temperature and current monitoring,
+  cooling behaviour, emergency control, machine-state visualization, and
+  CSV-based operational data logging. The project serves as the first
+  implemented module of a broader Human-Centered AI Digital Twin research
+  platform. Computer vision, explainable AI, predictive maintenance, and
+  Extended Reality integration are planned research extensions and are not
+  part of the current release.
 
 keywords:
   - Digital Twin
-  - Human-Centered AI
   - Unity
-  - Computer Vision
-  - Extended Reality
-  - Industry 5.0
+  - C Sharp
   - Industrial Simulation
+  - Virtual Sensors
+  - Smart Manufacturing
+  - Human-Centered AI
+  - Extended Reality
+  - Industry 4.0
+  - Industry 5.0
 
+repository-code: "https://github.com/Dr-AMH/IndustrialConveyorDigitalTwin"
+url: "https://github.com/Dr-AMH/IndustrialConveyorDigitalTwin"
 license: MIT
+version: "1.0.0"
+date-released: "2026-08-02"
 
-version: 1.0.0
-
-date-released: 2026-08-02
+preferred-citation:
+  type: software
+  title: "Industrial Conveyor Digital Twin"
+  authors:
+    - family-names: "Hanif"
+      given-names: "Ayaz Muhammad"
+      orcid: "https://orcid.org/0000-0002-3473-3929"
+  version: "1.0.0"
+  repository-code: "https://github.com/Dr-AMH/IndustrialConveyorDigitalTwin"
+  date-released: "2026-08-02"
