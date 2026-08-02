@@ -165,3 +165,27 @@ CSV Analytics
 Human-Centered Design
 
 Industrial Simulation
+
+**Author**
+
+Dr. Ayaz Muhammad Hanif
+
+PhD Design & Computer Science
+
+Research Areas:
+
+XR
+Human-Computer Interaction
+Gamification
+AI-Assisted Learning
+Intelligent Simulation Systems
+
+**Intellectual Property Notice**
+
+This project is currently under active development.
+
+All rights reserved.
+
+The source code, design, architecture, datasets, and documentation may not be copied, modified, distributed, or used commercially without explicit written permission from the author.
+
+© 2026 Dr. Ayaz Muhammad Hanif
