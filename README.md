@@ -2,7 +2,7 @@
 ### AI-powered Human-Centered Digital Twin for Intelligent Industrial Monitoring, Operator Assistance, and Future XR Integration
 
 <p align="center">
-<img src="Images/HeroScreenshot.png" width="100%">
+<img src="Screenshots/HeroScreenshot.png" width="100%">
 </p>
 
 Overall view of the Industrial Conveyor Digital Twin showing the interactive monitoring dashboard and simulated production environment.
@@ -145,7 +145,7 @@ Media/
 ## Industrial Conveyor
 
 <p align="center">
-<img src="Images/ConveyorOperation.png" width="100%">
+<img src="Screenshots/ConveyorOperation.png" width="100%">
 </p>
 
 Dynamic conveyor simulation demonstrating product transportation and process execution.
@@ -155,7 +155,7 @@ Dynamic conveyor simulation demonstrating product transportation and process exe
 ## Sensor Monitoring
 
 <p align="center">
-<img src="Images/SensorMonitoring.png" width="100%">
+<img src="Screenshots/SensorMonitoring.png" width="100%">
 </p>
 
 Virtual industrial sensors continuously monitor package movement across the production line.
@@ -165,7 +165,7 @@ Virtual industrial sensors continuously monitor package movement across the prod
 ## Machine Monitoring
 
 <p align="center">
-<img src="Images/MachineMonitoring.png" width="100%">
+<img src="Screenshots/MachineMonitoring.png" width="100%">
 </p>
 
 Real-time industrial monitoring dashboard displaying machine operating parameters.
@@ -175,7 +175,7 @@ Real-time industrial monitoring dashboard displaying machine operating parameter
 ## Emergency / Fault State
 
 <p align="center">
-<img src="Images/FaultState.png" width="100%">
+<img src="Screenshots/FaultState.png" width="100%">
 </p>
 
 Emergency stop mode illustrating abnormal operating conditions within the Digital Twin.
@@ -185,7 +185,7 @@ Emergency stop mode illustrating abnormal operating conditions within the Digita
 ## CSV Logging
 
 <p align="center">
-<img src="Images/CSVLogging.png" width="100%">
+<img src="Screenshots/CSVLogging.png" width="100%">
 </p>
 
 ---
