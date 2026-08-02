@@ -311,7 +311,7 @@ https://github.com/Dr-AMH
 
 If you use this project in your research, please cite this repository.
 
-(CITATION.cff will be added.)
+./CITATION.cff
 
 ---
 
