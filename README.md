@@ -2,8 +2,10 @@
 ### AI-powered Human-Centered Digital Twin for Intelligent Industrial Monitoring, Operator Assistance, and Future XR Integration
 
 <p align="center">
-<img src="Media/Banner.png" width="100%">
+<img src="Images/Hero Screenshot.png" width="100%">
 </p>
+
+Overall view of the Industrial Conveyor Digital Twin showing the interactive monitoring dashboard and simulated production environment.
 
 ![Unity](https://img.shields.io/badge/Unity-2022+-black)
 ![C#](https://img.shields.io/badge/C%23-Programming-blue)
