@@ -1,4 +1,4 @@
-# Industrial Conveyor Digital Twin
+# Industrial Conveyor Digital Twin — Module 1 of the Human-Centered AI Digital Twin Platform
 ### AI-powered Human-Centered Digital Twin for Intelligent Industrial Monitoring, Operator Assistance, and Future XR Integration
 
 <p align="center">
@@ -15,7 +15,7 @@
 
 # Project Overview
 
-The **Industrial Conveyor Digital Twin** is an interactive industrial simulation platform developed in **Unity** to demonstrate how Digital Twin technologies can improve manufacturing monitoring, operator training, and future AI-assisted decision support.
+The **Industrial Conveyor Digital Twin — Module 1 of the Human-Centered AI Digital Twin Platform** is an interactive industrial simulation platform developed in **Unity** to demonstrate how Digital Twin technologies can improve manufacturing monitoring, operator training, and future AI-assisted decision support.
 
 The current implementation simulates a conveyor-based production system equipped with virtual industrial sensors, machine monitoring, package tracking, and operational dashboards. The project is designed as the **first module of the Human-Centered AI Digital Twin Platform**, a long-term research initiative integrating Artificial Intelligence, Computer Vision, Explainable AI, and Extended Reality (XR) for intelligent industrial environments.
 
@@ -190,7 +190,7 @@ Future modules include
 
 ## Phase 1 (Completed)
 
-Industrial Conveyor Digital Twin
+Industrial Conveyor Digital Twin — Module 1 of the Human-Centered AI Digital Twin Platform
 
 ---
 
