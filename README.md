@@ -117,15 +117,11 @@ XR Visualization
 
 # Technologies Used
 
-| Category | Technologies |
+| Status | Technologies |
 |-----------|--------------|
-| Engine | Unity |
-| Programming | C# |
-| Backend | Python |
-| AI (Future) | OpenCV, MediaPipe |
-| XR | Unity XR Toolkit |
-| Data | CSV |
-| Version Control | Git & GitHub |
+| Implemented | Unity, C#, CSV logging |
+| In development | Computer Vision integration |
+| Planned | Python, OpenCV, MediaPipe, XR Toolkit, Explainable AI |
 
 ---
 
