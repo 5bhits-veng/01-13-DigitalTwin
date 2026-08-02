@@ -311,7 +311,39 @@ https://github.com/Dr-AMH
 
 If you use this project in your research, please cite this repository.
 
-./CITATION.cff
+cff-version: 1.2.0
+title: "Industrial Conveyor Digital Twin"
+message: "If you use this project in your research, please cite it using the metadata below."
+type: software
+
+authors:
+  - family-names: "Hanif"
+    given-names: "Ayaz Muhammad"
+    orcid: "https://orcid.org/YOUR-ORCID"
+
+repository-code: "https://github.com/Dr-AMH/IndustrialConveyorDigitalTwin"
+
+url: "https://github.com/Dr-AMH/IndustrialConveyorDigitalTwin"
+
+abstract: >
+  Industrial Conveyor Digital Twin is a Unity-based Human-Centered
+  Digital Twin platform for intelligent industrial monitoring,
+  operator assistance, and future AI/XR research.
+
+keywords:
+  - Digital Twin
+  - Human-Centered AI
+  - Unity
+  - Computer Vision
+  - Extended Reality
+  - Industry 5.0
+  - Industrial Simulation
+
+license: MIT
+
+version: 1.0.0
+
+date-released: 2026-08-02
 
 ---
 
