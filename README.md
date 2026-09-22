@@ -1,320 +1,172 @@
-# Industrial Conveyor Digital Twin — Module 1 of the Human-Centered AI Digital Twin Platform
-### AI-powered Human-Centered Digital Twin for Intelligent Industrial Monitoring, Operator Assistance, and Future XR Integration
+# Industrial Conveyor Digital Twin
 
-<p align="center">
-<img src="Screenshots/HeroScreenshot.png" width="100%">
-</p>
+Industrial Conveyor Digital Twin is a Unity-based operational simulation of a conveyor production line. It models product flow, virtual entry and exit sensors, machine conditions, operational state changes, a live monitoring dashboard, stack-light indicators, and CSV telemetry logging using synthetic sensor values.
 
-Overall view of the Industrial Conveyor Digital Twin showing the interactive monitoring dashboard and simulated production environment.
+![Industrial Conveyor Digital Twin](Screenshots/HeroScreenshot.png)
 
-![Unity](https://img.shields.io/badge/Unity-2022+-black)
-![C#](https://img.shields.io/badge/C%23-Programming-blue)
-![Python](https://img.shields.io/badge/Python-AI-yellow)
-![Digital Twin](https://img.shields.io/badge/Industry-Digital%20Twin-success)
-![XR](https://img.shields.io/badge/XR-Future-orange)
+## What It Does
 
----
+The application simulates a small conveyor system and exposes its live operational state through an interactive dashboard. Products are spawned at a configurable interval, transported along the conveyor, detected by trigger-based virtual sensors, counted at the exit, and removed from the line. A machine-condition component generates synthetic temperature and electrical-current values and moves the system through normal, warning, fault, stopped, and emergency-stop states.
 
-# Project Overview
+## Implemented Features
 
-The **Industrial Conveyor Digital Twin — Module 1 of the Human-Centered AI Digital Twin Platform** is an interactive industrial simulation platform developed in **Unity** to demonstrate how Digital Twin technologies can improve manufacturing monitoring, operator training, and future AI-assisted decision support.
+### Conveyor and product flow
 
-The current implementation simulates a conveyor-based production system equipped with virtual industrial sensors, machine monitoring, package tracking, and operational dashboards. The project is designed as the **first module of the Human-Centered AI Digital Twin Platform**, a long-term research initiative integrating Artificial Intelligence, Computer Vision, Explainable AI, and Extended Reality (XR) for intelligent industrial environments.
+- Configurable conveyor speed
+- Timed product spawning with a maximum active-product limit
+- Rigidbody-based product movement while the conveyor is operational
+- Visible motor rotation linked to conveyor speed
+- Start, stop, reset, and emergency-stop controls
 
-Unlike conventional Digital Twins that primarily monitor machines, this research aims to develop Digital Twins capable of understanding human activities, providing explainable assistance, and supporting collaborative decision-making in Industry 5.0.
+### Virtual sensing and production counting
 
----
+- Trigger-based entry sensor
+- Trigger-based exit sensor
+- Live entry/exit detection state
+- Completed-product counting at the exit sensor
+- Product cleanup after completion
 
-# Research Motivation
+### Synthetic machine-condition simulation
 
-Manufacturing industries are rapidly adopting Digital Twins to improve operational efficiency and predictive maintenance. However, existing Digital Twins primarily focus on machine monitoring and rarely incorporate intelligent support for human operators.
+- Motor-temperature simulation
+- Ambient cooling when the conveyor is not operating
+- Electrical-current simulation based on conveyor speed
+- Configurable warning and critical temperature thresholds
+- Automatic warning and overheating-fault transitions
 
-This project explores how Human-Centered AI can extend Digital Twins beyond visualization by integrating real-time monitoring, Computer Vision, Explainable AI, and immersive XR interfaces to assist operators during industrial tasks.
+All temperature, electrical-current, and sensor values are simulated. They are not measurements from physical industrial equipment.
 
----
+### Operational monitoring
 
-# Research Vision
+- Live dashboard for state, speed, temperature, current, production count, and sensor status
+- Normal, warning, fault, and emergency messages
+- Red/yellow/green stack-light indicators
+- Dashboard speed control
 
-> To develop intelligent Human-Centered Digital Twins that combine Computer Vision, Artificial Intelligence, Explainable AI, and Extended Reality (XR) to enhance industrial monitoring, workforce training, maintenance, and collaborative decision-making.
+### CSV logging
 
----
-
-# Current Features
-
-## Industrial Conveyor Simulation
-
-- Realistic conveyor belt simulation
-- Continuous package transportation
-- Adjustable conveyor operation
-
----
-
-## Industrial Sensors
-
-- Entry sensor
-- Exit sensor
-- Package detection
-- Machine state monitoring
-
----
-
-## Machine Monitoring
-
-- Temperature monitoring
-- Electrical current monitoring
-- Cooling mechanism
-- Machine operating status
-
----
-
-## Live Dashboard
-
-- Conveyor status
-- Temperature
-- Current
-- Package counter
-- Machine state
-- Sensor status
-
----
-
-## Data Logging
-
-Operational data are automatically exported into CSV files for:
-
-- Performance analysis
-- Future AI model training
-- Research experiments
-- Predictive analytics
-
----
-
-# System Architecture
+`DigitalTwinLogger.cs` creates a timestamped CSV file and records operational data at a configurable interval. The output contains:
 
 ```text
-Industrial Environment
-        │
-        ▼
-Virtual Sensors
-        │
-        ▼
-Unity Digital Twin
-        │
-        ▼
-Industrial Dashboard
-        │
-        ▼
-CSV Data Logging
-        │
-        ▼
-Future AI Modules
-        │
-        ▼
-XR Visualization
+Timestamp,State,Speed,Temperature,Current,ProductionCount,EntrySensor,ExitSensor
 ```
 
----
+Files are written to Unity's `Application.persistentDataPath`. The logs are intended for operational review, basic analysis, demonstrations, and future experimentation. The current project provides basic operational metrics and logging; it does not implement predictive analytics.
 
-# Technologies Used
+## System Architecture
 
-| Status | Technologies |
-|-----------|--------------|
-| Implemented | Unity, C#, CSV logging |
-| In development | Computer Vision integration |
-| Planned | Python, OpenCV, MediaPipe, XR Toolkit, Explainable AI |
+```mermaid
+flowchart LR
+    A[Dashboard controls] --> B[ConveyorTwinData]
+    B --> C[Conveyor and motor]
+    B --> D[Product spawner]
+    D --> E[Moving products]
+    E --> F[Entry and exit sensors]
+    F --> B
+    B --> G[Condition simulator]
+    B --> H[Dashboard and stack lights]
+    B --> I[CSV logger]
+```
 
----
+`ConveyorTwinData` is the shared operational state. Equipment, sensors, machine-condition simulation, dashboard components, indicators, and logging read from or update that state.
 
-# Repository Structure
+## Technology Stack
+
+- Developed with Unity `6000.3.20f1`
+- Runtime tested successfully with Unity `6000.3.24f1`
+- C#
+- Universal Render Pipeline
+- Unity Input System
+- TextMeshPro and Unity UI
+- Rigidbody and trigger-based simulation
+- CSV file output
+
+## Project Structure
 
 ```text
 Assets/
-PythonBackend/
-Documentation/
-Architecture/
-Screenshots/
+  Scenes/ConveyorDigitalTwin.unity
+  Prefabs/ProductBox.prefab
+  Art/Materials/
+  Scripts/
+    Core/
+      ConveyorTwinData.cs
+      SimpleCameraController.cs
+    Equipment/
+      ConveyorMover.cs
+      MachineConditionSimulator.cs
+      MotorRotation.cs
+      ProductSpawner.cs
+    Sensors/
+      IndustrialSensor.cs
+    UI/
+      DigitalTwinDashboard.cs
+      StackLightController.cs
+    Logging/
+      DigitalTwinLogger.cs
+Packages/
+ProjectSettings/
 SampleData/
-Research/
-Media/
+Screenshots/
 ```
 
----
+## Running the Project
 
-# Screenshots
+1. Open the repository with Unity `6000.3.20f1` or a compatible Unity 6000.3 editor. Runtime testing passed with Unity `6000.3.24f1`.
+2. Allow Unity to resolve the packages declared in `Packages/manifest.json`.
+3. Open `Assets/Scenes/ConveyorDigitalTwin.unity`.
+4. Enter Play mode.
+5. Use the dashboard controls to start, stop, reset, change speed, or trigger an emergency stop.
+6. Inspect generated CSV files in the platform-specific location returned by `Application.persistentDataPath`.
 
-## Industrial Conveyor
+No Python backend is required for the implemented simulation.
 
-<p align="center">
-<img src="Screenshots/ConveyorOperation.png" width="100%">
-</p>
+## Screenshots
 
-Dynamic conveyor simulation demonstrating product transportation and process execution.
+### Conveyor operation
 
----
+![Conveyor operation](Screenshots/ConveyorOperation.png)
 
-## Sensor Monitoring
+### Virtual sensor monitoring
 
-<p align="center">
-<img src="Screenshots/SensorMonitoring.png" width="100%">
-</p>
+![Sensor monitoring](Screenshots/SensorMonitoring.png)
 
-Virtual industrial sensors continuously monitor package movement across the production line.
+### Machine monitoring dashboard
 
----
+![Machine monitoring](Screenshots/MachineMonitoring.png)
 
-## Machine Monitoring
+### Emergency/fault presentation
 
-<p align="center">
-<img src="Screenshots/MachineMonitoring.png" width="100%">
-</p>
+![Fault state](Screenshots/FaultState.png)
 
-Real-time industrial monitoring dashboard displaying machine operating parameters.
+### CSV output
 
----
+![CSV logging](Screenshots/CSVLogging.png)
 
-## Emergency / Fault State
+## Implemented Versus Future Functionality
 
-<p align="center">
-<img src="Screenshots/FaultState.png" width="100%">
-</p>
+The current repository implements the Unity conveyor simulation, synthetic virtual sensors, machine-condition logic, operational dashboard, state indicators, and CSV logging described above.
 
-Emergency stop mode illustrating abnormal operating conditions within the Digital Twin.
+## Potential Extensions
 
----
+The following are possible future additions and are **not implemented** in the current repository:
 
-## CSV Logging
+- Python services or external data processing
+- Computer-vision inspection with OpenCV or MediaPipe
+- AI/ML-based anomaly detection
+- Predictive-maintenance models
+- Advanced analytical dashboards and charts
+- XR interfaces or remote assistance
+- Integration with physical PLC, sensor, or industrial IoT data
 
-<p align="center">
-<img src="Screenshots/CSVLogging.png" width="100%">
-</p>
+## Limitations
 
----
+- Sensor and machine-condition values are synthetic.
+- The simulation is not connected to physical equipment or a PLC.
+- CSV logging provides raw operational records rather than predictive analysis.
+- No Python, computer-vision, AI/ML, predictive-maintenance, or XR runtime is included.
 
-# Research Platform
+## Author
 
-This project is the first implementation of the
-
-# Human-Centered AI Digital Twin Platform
-
-Future modules include
-
-- AI Motion Analysis
-- Human Pose Estimation
-- Computer Vision Inspection
-- Explainable AI Dashboard
-- XR Remote Assistance
-- Predictive Maintenance
-- Human-Robot Collaboration
-
----
-
-# Research Roadmap
-
-## Phase 1 (Completed)
-
-Industrial Conveyor Digital Twin — Module 1 of the Human-Centered AI Digital Twin Platform
-
----
-
-## Phase 2 (In Progress)
-
-Computer Vision Integration
-
----
-
-## Phase 3
-
-AI-based Skill Assessment
-
----
-
-## Phase 4
-
-Explainable AI
-
----
-
-## Phase 5
-
-Extended Reality Integration
-
----
-
-## Phase 6
-
-Human-Robot Collaboration
-
----
-
-# Industrial Applications
-
-- Smart Manufacturing
-- Industry 4.0
-- Industry 5.0
-- Predictive Maintenance
-- Operator Training
-- Industrial Simulation
-- Human-AI Collaboration
-
----
-
-# Installation
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/Dr-AMH/IndustrialConveyorDigitalTwin.git
-```
-
-2. Open the project in Unity.
-
-3. Run the Python backend (if required).
-
-4. Open the Conveyor scene.
-
-5. Press Play.
-
----
-
-# Future Research
-
-This repository is continuously evolving toward a Human-Centered AI platform integrating
-
-- Computer Vision
-- Explainable AI
-- Vision-Language Models
-- XR Interfaces
-- Intelligent Digital Twins
-- Embodied AI
-
----
-
-# About the Author
-
-**Dr. Ayaz Muhammad Hanif**
-
-Research Engineer | Human-Centered AI | Computer Vision | Extended Reality | Digital Twins
-
-Website:
-https://ideveloperz.com
-
-GitHub:
-https://github.com/Dr-AMH
-
----
-
-# Citation
-
-CITATION.cff
-
----
-
-# License
-
-This project is released under the MIT License.
-
----
-
-# Acknowledgements
-
-This project reflects ongoing research in Human-Centered AI, Digital Twins, and XR systems and forms part of a broader research agenda focused on intelligent industrial technologies and Industry 5.0.
+Dr. Ayaz Muhammad Hanif<br>
+[iDeveloperz](https://ideveloperz.com)
