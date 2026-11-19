@@ -66,3 +66,77 @@ Datenprotokoll
 - Echte Kenndaten
 - Ein Sicherheitskonzept(Not-Aus muss auch von der Hardware aus laufen, nicht nur in Unity)
 - Regeln für Netzwerk, Zugriff, etc
+
+## UML-Sequenzdiagramm: Not-Halt auslösen (Ablauf C)
+
+### Beteiligte Objekte
+
+| Objekt | Aufgabe im Ablauf |
+|---|---|
+| Bediener | drückt den Not-Halt-Button |
+| EmergencyButton (UI Button) | löst sein `onClick`-Event aus |
+| DigitalTwinDashboard | nimmt den Klick an und leitet ihn an die Steuerung weiter, zeigt danach den Status an |
+| ConveyorTwinData | zentrale Steuerung/Datenhaltung, ändert den Betriebszustand |
+| ConveyorMover | bewegt die Produkte auf dem Band |
+| MotorRotation | dreht die Antriebsrolle |
+| ProductSpawner | erzeugt neue Produkte |
+| StackLightController | schaltet die Signalampel |
+
+### Diagramm
+
+```mermaid
+sequenceDiagram
+    actor Bediener
+    participant Btn as EmergencyButton
+    participant Dash as DigitalTwinDashboard
+    participant Data as ConveyorTwinData
+    participant Mover as ConveyorMover
+    participant Motor as MotorRotation
+    participant Spawner as ProductSpawner
+    participant Light as StackLightController
+
+    Bediener->>Btn: Klick auf "Not-Halt"
+    Btn->>Dash: onClick → EmergencyStop()
+    Dash->>Data: EmergencyStop()
+    activate Data
+    Data->>Data: currentState = EmergencyStopped
+    Data->>Data: conveyorSpeed = 0
+    Data->>Data: NotifyDataChanged()
+    deactivate Data
+
+    Note over Mover,Light: Nächster Frame: alle Komponenten fragen den Zustand selbst ab
+
+    Mover->>Data: IsConveyorOperational()
+    Data-->>Mover: false
+    Note right of Mover: Produkte werden nicht mehr bewegt
+
+    Motor->>Data: IsConveyorOperational()
+    Data-->>Motor: false
+    Note right of Motor: Rolle dreht sich nicht mehr
+
+    Spawner->>Data: IsConveyorOperational()
+    Data-->>Spawner: false
+    Note right of Spawner: keine neuen Produkte
+
+    Light->>Data: currentState abfragen
+    Data-->>Light: EmergencyStopped
+    Light->>Light: TurnAllLightsOff()
+    Light->>Light: SetLight(redLight, rot)
+
+    Dash->>Dash: RefreshDashboard()
+    Dash->>Data: Daten abfragen
+    Data-->>Dash: EmergencyStopped, Speed 0
+    Dash->>Dash: UpdateStatusVisuals(EmergencyStopped)
+    Note right of Dash: Statusanzeige rot,<br/>"EMERGENCY STOP ACTIVATED"
+```
+
+### Zeitliche Reihenfolge
+
+1. Der Bediener klickt auf den Not-Halt-Button. Der Button ruft über sein `onClick`-Event `DigitalTwinDashboard.EmergencyStop()` auf.
+2. Das Dashboard gibt den Aufruf an `ConveyorTwinData.EmergencyStop()` weiter.
+3. `ConveyorTwinData` setzt den Zustand auf `EmergencyStopped`, die Geschwindigkeit auf `0` und ruft `NotifyDataChanged()` auf.
+4. Im nächsten Frame fragen `ConveyorMover`, `MotorRotation` und `ProductSpawner` mit `IsConveyorOperational()` nach, ob die Anlage läuft. Die Antwort ist `false`, also stoppen Band, Motor und Produktion.
+5. Der `StackLightController` liest den Zustand und schaltet nur die rote Lampe ein.
+6. Das Dashboard aktualisiert in `RefreshDashboard()` die Texte und setzt in `UpdateStatusVisuals()` die Statusanzeige auf Rot mit der Meldung "EMERGENCY STOP ACTIVATED".
+
+Die Komponenten werden nicht direkt von `ConveyorTwinData` benachrichtigt. Das Event `DataChanged` hat keine Abonnenten, stattdessen fragt jede Komponente in ihrem eigenen `Update()`/`FixedUpdate()` den Zustand ab (Polling). Wieder starten geht erst nach `ResetMachine()`, weil `StartMachine()` im Zustand `EmergencyStopped` abbricht.
